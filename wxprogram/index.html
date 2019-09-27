@@ -39,6 +39,7 @@
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
+    
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
@@ -549,7 +550,8 @@ if ($exist) {
 //断开数据库连接
 mysql_close($con);
 }
-?&gt;</code></pre><h4 id="（B）复杂版：待补充"><a href="#（B）复杂版：待补充" class="headerlink" title="（B）复杂版：待补充"></a>（B）复杂版：待补充</h4><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>节流处理(频繁调动api的时候需要)</p>
+?&gt;</code></pre><h4 id="（B）复杂版：待补充"><a href="#（B）复杂版：待补充" class="headerlink" title="（B）复杂版：待补充"></a>（B）复杂版：待补充</h4><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><blockquote>
+<p>节流处理(频繁调动api的时候需要)</p>
 <pre><code>// 节流
 const throttle = function(fn, delay) {
   let lastTime = 0
@@ -571,24 +573,21 @@ const throttle = function(fn, delay) {
       })
       this.changeSearchCls()
       return false
-    }
-
-    api.getSuggestion({
-      keyword: val
-    })
-      .then((res) =&gt; {
-        this.setData({
-          suggList: res
-        })
-        this.changeSearchCls()
-      })
-      .catch((err) =&gt; {
-        console.error(err)
-      })
-  }, 500),
-  // ...
+    }</code></pre></blockquote>
+<pre><code>api.getSuggestion({
+  keyword: val
 })
-</code></pre>
+  .then((res) =&gt; {
+    this.setData({
+      suggList: res
+    })
+    this.changeSearchCls()
+  })
+  .catch((err) =&gt; {
+    console.error(err)
+  })</code></pre><p>  }, 500),<br>  // …<br>})</p>
+<p>```</p>
+
             </div>
             <hr/>
 
